@@ -63,6 +63,7 @@ export const start: WebpackBuilder['start'] = async ({ startTime, options, route
   const middlewareOptions: Parameters<typeof webpackDevMiddleware>[1] = {
     publicPath: config.output?.publicPath as string,
     writeToDisk: true,
+    ...(config.devServer || {}),
   };
 
   compilation = webpackDevMiddleware(compiler, middlewareOptions);
